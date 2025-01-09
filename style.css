@@ -1,0 +1,194 @@
+/* Style de base */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
+
+/* Header */
+header {
+    background-color: #800000;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    flex-direction: column;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 890px;
+}
+
+.logo {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.search-bar {
+    padding: 5px;
+    width: 250px;
+    border: none;
+    border-radius: 5px;
+}
+
+.icons a {
+    margin-left: 10px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Style pour la sidebar avec animation */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px; /* Position initiale hors de l'écran */
+    width: 250px;
+    height: 100%;
+    background-color: #f7f7f7;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+.sidebar.active {
+    left: 0; /* Affiche la sidebar */
+}
+
+.sidebar h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #800000;
+    font-weight: bold;
+}
+
+/* Style pour l'icône de la sidebar */
+.sidebar-toggle {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #ffffff;
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    z-index: 1100;
+    transition: color 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+.sidebar.active .sidebar-toggle {
+    color: #000000; /* Couleur noire lorsque la sidebar est ouverte */
+    left: 230px; /* Déplacement vers la droite */
+}
+
+/* Overlay pour masquer le reste de la page lors de l'ouverture de la sidebar */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.3s, opacity 0.3s;
+    z-index: 999;
+}
+
+.overlay.visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Main Content */
+main {
+    margin-left: 220px;
+    padding: 20px;
+}
+
+.carousel {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.product-card {
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    text-align: center;
+}
+
+.product-card img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.product-card button {
+    background-color: #800000;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+footer form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+footer input, footer textarea {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+}
+
+footer button {
+    background-color: #800000;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
