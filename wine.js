@@ -32,10 +32,31 @@ carousels.forEach(carousel => {
     });
 });
 
-// Gestion de la sidebar avec animation fluide
+// Gestion de la sidebar
+const toggleSidebar = document.getElementById('toggle-sidebar');
+const closeSidebar = document.getElementById('close-sidebar');
 const sidebar = document.querySelector('.sidebar');
-const sidebarToggle = document.querySelector('.sidebar-toggle');
-const overlay = document.querySelector('.overlay');
+
+if (toggleSidebar && closeSidebar && sidebar) {
+    // Ouvrir la sidebar
+    toggleSidebar.addEventListener('click', () => {
+        sidebar.classList.add('visible');
+    });
+
+    // Fermer la sidebar
+    closeSidebar.addEventListener('click', () => {
+        sidebar.classList.remove('visible');
+    });
+
+    // Fermer la sidebar en cliquant à l'extérieur (optionnel)
+    document.addEventListener('click', (e) => {
+        if (!sidebar.contains(e.target) && !toggleSidebar.contains(e.target)) {
+            sidebar.classList.remove('visible');
+        }
+    });
+} else {
+    console.error("Les éléments nécessaires pour la sidebar n'ont pas été trouvés dans le DOM.");
+}
 
 // Vérification des éléments
 if (!sidebar || !sidebarToggle || !overlay) {
