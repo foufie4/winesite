@@ -27,28 +27,28 @@ carousels.forEach(carousel => {
         if (!isDown) return;
         e.preventDefault();
         const x = e.pageX - carousel.offsetLeft;
-        const walk = (x - startX) * 2; // Ajuste la vitesse de défilement
+        const walk = (x - startX) * 2; // ajuster la vitesse de défilement
         carousel.scrollLeft = scrollLeft - walk;
     });
 });
 
-// Gestion de la sidebar
-const toggleSidebar = document.getElementById('toggle-sidebar');
+// gestion de la sidebar
+const toggleSidebar = document.getElementById('sidebar-toggle');
 const closeSidebar = document.getElementById('close-sidebar');
 const sidebar = document.querySelector('.sidebar');
 
 if (toggleSidebar && closeSidebar && sidebar) {
-    // Ouvrir la sidebar
+    // ouvrir la sidebar
     toggleSidebar.addEventListener('click', () => {
         sidebar.classList.add('visible');
     });
 
-    // Fermer la sidebar
+    // fermer la sidebar
     closeSidebar.addEventListener('click', () => {
         sidebar.classList.remove('visible');
     });
 
-    // Fermer la sidebar en cliquant à l'extérieur (optionnel)
+    // fermer la sidebar en cliquant à l'extérieur
     document.addEventListener('click', (e) => {
         if (!sidebar.contains(e.target) && !toggleSidebar.contains(e.target)) {
             sidebar.classList.remove('visible');
@@ -229,7 +229,7 @@ function displayOrders() {
 displayOrders();
 
 // Gestion de la liste de souhaits
-let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 const buttonsAddToWishlist = document.querySelectorAll('.product-card .add-to-wishlist');
 
 buttonsAddToWishlist.forEach(button => {
@@ -265,16 +265,21 @@ function displayWishlist() {
             <span>${productName}</span>
             <button class="remove-from-wishlist">Supprimer</button>
         `;
-        
-        productRow.querySelector('.remove-from-wishlist').addEventListener('click', () => removeFromWishlist(productName));
+
+        productRow.querySelector('.remove-from-wishlist').addEventListener('click', () => {
+            removeFromWishlist(productName);
+        });
         wishlistContainer.appendChild(productRow);
     });
 }
 
 function removeFromWishlist(productName) {
-    wishlist = wishlist.filter(item => item !== productName);
-    localStorage.setItem('wishlist', JSON.stringify(wishlist));
-    displayWishlist();
+    const index = wishlist.indexOf(productName);
+    if (index > -1) {
+        wishlist.splice(index, 1);
+        localStorage.setItem('wishlist', JSON.stringify(wishlist));
+        displayWishlist();
+    }
 }
 
 // Gestion du formulaire de contact

@@ -26,7 +26,7 @@ header {
 .header-content {
     display: flex;
     align-items: center;
-    gap: 890px;
+    gap: 460px;
 }
 
 .logo {
@@ -52,7 +52,7 @@ header {
 .sidebar {
     position: fixed;
     top: 0;
-    left: -250px; /* Sidebar starts hidden */
+    left: -250px;
     width: 250px;
     height: 100%;
     background-color: #800000;
@@ -64,7 +64,7 @@ header {
 }
 
 .sidebar.visible {
-    left: 0; /* Sidebar slides in */
+    left: 0;
 }
 
 #close-sidebar {
@@ -88,6 +88,11 @@ header {
 #sidebar-toggle {
     cursor: pointer;
     font-size: 20px;
+    color: white;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
 }
 
 /* Overlay pour masquer le reste de la page lors de l'ouverture de la sidebar */
